@@ -16,7 +16,7 @@ public class HelloController {
 
     private final HelloService helloService;
 
-    @GetMapping("/hello")
+    @GetMapping("/v1/hello")
     @Operation(summary = "Get Hello Message", description = "Returns the hello message.")
     public ResponseEntity<HelloResponse> getHello() {
         return ResponseEntity.ok(helloService.getHelloMessage());

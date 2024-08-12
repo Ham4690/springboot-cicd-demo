@@ -1,0 +1,18 @@
+spring:
+  application:
+    name: demo-default
+  profiles:
+    active: local
+
+springdoc:
+  api-docs:
+    path: /api-docs
+    groups:
+      openapi:
+        paths-to-match: /api/**
+  swagger-ui:
+    path: /swagger-ui.html
+    disable-swagger-default-url: true
+  output:
+    yaml: true
+
