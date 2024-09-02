@@ -6,6 +6,7 @@ plugins {
     id("org.springframework.boot") version "3.3.2"
     id("io.spring.dependency-management") version "1.1.6"
     id("net.ltgt.errorprone") version "4.0.1"
+    id("org.springdoc.openapi-gradle-plugin") version "1.9.0"
 }
 
 group = "com.example"
@@ -54,4 +55,15 @@ tasks.withType<JavaCompile> {
     options.errorprone {
         check("NullAway", CheckSeverity.OFF)
     }
+}
+
+openApi {
+    outputFileName.set("openapi.yaml")  // 出力ファイル名を指定
+    outputDir.set(layout.projectDirectory.dir("docs"))  // 出力ディレクトリを指定
+    apiDocsUrl.set("http://localhost:8080/v3/api-docs")  // APIドキュメントのURL
+    waitTimeInSeconds.set(10)  // サーバーが起動するのを待つ時間（秒）
+}
+
+tasks.named("build") {
+    dependsOn("generateOpenApiDocs")
 }

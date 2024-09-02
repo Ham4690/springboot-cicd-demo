@@ -4,7 +4,6 @@ on:
   push:
     branches:
       - main
-  page_build:
 
 jobs:
   build:
@@ -23,15 +22,17 @@ jobs:
       - name: Build with Gradle
         run: ./gradlew build
 
-      - run: echo "${{ github.event.head_commit.message }}"
-      - run: echo "${{ github.event.head_commit.author.name }}"
-      - run: echo "${{ github.event.head_commit.author.email }}"
+      - name: Copy Swagger UI and API Docs to Publish Directory
+        run: |
+          mkdir -p build/swagger-ui
+          cp -r docs/swagger/* build/swagger-ui/
+          cp docs/openapi.yaml build/swagger-ui/
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./target/generated-docs
+          publish_dir: ./build/swagger-ui
           publish_branch: gh-pages
           cname: demo-local
           commit_message: ${{ github.event.head_commit.message }}
