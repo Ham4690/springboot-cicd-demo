@@ -26,7 +26,7 @@ jobs:
         run: |
           mkdir -p build/swagger-ui
           cp -r docs/swagger-ui/* build/swagger-ui/
-          cp docs/openapi.yaml build/swagger-ui/
+          cp docs/openapi.yml build/swagger-ui/
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
