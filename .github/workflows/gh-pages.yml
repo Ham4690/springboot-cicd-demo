@@ -25,7 +25,7 @@ jobs:
       - name: Copy Swagger UI and API Docs to Publish Directory
         run: |
           mkdir -p build/swagger-ui
-          cp -r docs/swagger/* build/swagger-ui/
+          cp -r docs/swagger-ui/* build/swagger-ui/
           cp docs/openapi.yaml build/swagger-ui/
 
       - name: Deploy to GitHub Pages

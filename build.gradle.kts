@@ -58,7 +58,7 @@ tasks.withType<JavaCompile> {
 }
 
 openApi {
-    outputFileName.set("openapi.yaml")  // 出力ファイル名を指定
+    outputFileName.set("openapi.yml")  // 出力ファイル名を指定
     outputDir.set(layout.projectDirectory.dir("docs"))  // 出力ディレクトリを指定
     apiDocsUrl.set("http://localhost:8080/v3/api-docs")  // APIドキュメントのURL
     waitTimeInSeconds.set(10)  // サーバーが起動するのを待つ時間（秒）
